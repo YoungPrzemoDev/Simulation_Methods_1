@@ -42,7 +42,7 @@ public class Poczta {
                     servedCustomers++; // Increment the number of served customers.
 
                     customerServed = true; // Set the flag as the customer is served.
-                    System.out.println("Obluzony w oknie: "+ i);
+                    System.out.println("Served in window: "+ i);
                 }
                 else {
                     System.out.println("Window is busy right now...");

@@ -110,16 +110,32 @@ public class Main {
 
         System.out.println("\nZAD 3");
         System.out.println("=====================");
+
+        double a = 1;
+        double b = Math.E; // assuming b is e as given in the problem
+        int rep = 100000000; // number of subdivisions for approximation
         IFunc funkcja1 = new Funkcja1();
         IFunc funkcja2 = new Funkcja2();
 
         Calka calka = new Calka();
 
-        double wynik1 = calka.calculate(1, Math.E, funkcja1, 1); // całka funkcji x^2 od 0 do 1
-        double wynik2 = calka.calculate(1, 5, funkcja2, 1); // całka funkcji sin(x) od 0 do PI
+        double wynik1 = calka.calculate(a, b, funkcja1, rep); // całka funkcji x^2 od 0 do 1
+        double wynik2 = calka.calculate(a, 5, funkcja2, rep); // całka funkcji sin(x) od 0 do PI
 
-        System.out.println("Wynik całki funkcji1: " + wynik1);
-        System.out.println("Wynik całki funkcji2: " + wynik2);
+        double actualValue = 3 * (Math.log(b) - Math.log(a)); // analytical solution of the integral
+        double error = calka.calculateError(actualValue, wynik1);
+
+
+        System.out.println("Approximate value of the integral: " + wynik1);
+        System.out.println("Actual value of the integral: " + actualValue);
+        System.out.println("Relative error of the approximation: " + error);
+
+        double actualValue2 = (Math.pow(5, 3) - Math.pow(a, 3)) / 3; // analytical solution of the integral of x^2
+        double error2 = calka.calculateError(actualValue2, wynik2);
+
+        System.out.println("\nApproximate value of the integral: " + wynik2);
+        System.out.println("Actual value of the integral: " + actualValue2);
+        System.out.println("Relative error of the approximation: " + error2);
 
         //------------ZAD 4------------------
 

@@ -14,7 +14,7 @@ class Funkcja1 implements IFunc{
 }
 class Funkcja2 implements IFunc{
     public double func(double x){
-        return Math.sin(x*x);
+        return x*x;
     }
     public double max(double a, double b){
         return 1;
@@ -29,6 +29,10 @@ public class Calka{
             result += f.func(a + i * step) * step;
         }
         return result;
+    }
+
+    double calculateError(double actualValue, double approxValue) {
+        return Math.abs((actualValue - approxValue) / actualValue);
     }
 
 }
